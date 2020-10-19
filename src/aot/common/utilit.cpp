@@ -6,7 +6,7 @@
 #include <limits>
 #include <codecvt>
 #include <locale>
-#include <filesystem>
+//#include <filesystem>
 
 //  for mkdir
 #ifdef WIN32
@@ -2536,13 +2536,15 @@ void CTestCaseBase::write_test_cases(std::ostream& outp) const {
 // "c:/*.txt" -> c:/a.txt, c:/b.txt
 std::vector<std::string> list_path_by_file_mask(std::string filemask)
 {
-	auto path = std::filesystem::path(filemask);
-	std::vector<std::string> filenames;
+  auto path = NULL;//FIXME std::filesystem::path(filemask);
+  	std::vector<std::string> filenames;
+  /*
 	for (const auto& p : std::filesystem::directory_iterator(path.parent_path())) 	{
 		if (p.path().extension() == path.extension()) {
 			filenames.push_back(p.path().string());
 		}
 	}
+  */
 	return filenames;
 };
 
