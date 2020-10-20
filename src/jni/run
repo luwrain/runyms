@@ -1,3 +1,4 @@
 #!/bin/bash -e
 
+export RML=/tmp/aot
 java -Djava.library.path=. org.luwrain.runyms.Runyms

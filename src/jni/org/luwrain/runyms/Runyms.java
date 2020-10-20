@@ -10,7 +10,8 @@ public class Runyms
     {
 	System.loadLibrary("runyms_jni");
 	final Runyms r = new Runyms();
-	final String text = "Это пробный текст";
-	r.lemmatizeImpl(text.getBytes("UTF-8"));
+	final String text = "пробному";
+	String res = new String (r.lemmatizeImpl(text.getBytes("UTF-8")), "UTF-8");
+	System.out.println(res);
     }
 }

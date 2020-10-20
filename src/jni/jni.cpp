@@ -28,6 +28,21 @@ JNIEXPORT jbyteArray JNICALL Java_org_luwrain_runyms_Runyms_lemmatizeImpl
 	  w.reserve(len);
 	  for(jsize i = 0;i < len;i++)
 	    w += bytes[i];
-	  std::cout << w << std::endl;
+	  //	  std::cout << w << std::endl;
+	      CMorphologyHolder Holder;
+    if (!Holder.LoadLemmatizer(morphRussian))
+      {
+        std::cerr << "Cannot load morphology\n";
+    }
+    std::string s = convert_from_utf8(w.c_str(), morphRussian);
+    std::string res = LemmatizeJson(s.c_str(), &Holder, /*printForms*/true, true, true);
+    jbyteArray ret = env->NewByteArray(res.length());
+    env->SetByteArrayRegion (ret, 0, res.length(), (jbyte*)res.c_str());
+        return ret;
+
+
+
+    
+
 }
 
