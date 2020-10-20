@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+java -Djava.library.path=. org.luwrain.runyms.Runyms

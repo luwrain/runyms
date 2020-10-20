@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+javac org/luwrain/runyms/Runyms.java
+javah org.luwrain.runyms.Runyms
