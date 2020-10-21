@@ -30,10 +30,10 @@ public final class RunymsTest extends Assert
 	final String res = r.lemmatize("Томск");
 	assertNotNull(res);
 	assertFalse(res.isEmpty());
-			System.out.println("Proba: " + res);
+	System.out.println("Proba: " + res);
     }
 
-        @Test public void json() throws Exception
+    @Test public void tomsk() throws Exception
     {
 	final Runyms r = new Runyms();
 	r.init();
@@ -68,11 +68,52 @@ public final class RunymsTest extends Assert
 		assertNotNull(f.grm);
 		assertFalse(f.grm.trim().isEmpty());
 	    }
-
 	}
 	assertNotNull(p.pos);
 	assertEquals("СУЩЕСТВИТЕЛЬНОЕ мр", p.pos);
 	assertNotNull(k.wordForm);
 	assertEquals("ТОМСК", k.wordForm);
+    }
+
+        @Test public void tomske() throws Exception
+    {
+	final Runyms r = new Runyms();
+	r.init();
+	final String res = r.lemmatize("Томске");
+	assertNotNull(res);
+	assertFalse(res.isEmpty());
+	final LemmResult[] l = LemmResult.fromJsonAsArray(res);
+	assertNotNull(l);
+	assertEquals(1, l.length);
+	final LemmResult k = l[0];
+	assertNotNull(k.commonGrammems);
+	assertFalse(k.commonGrammems.trim().isEmpty());
+	assertTrue(k.found);
+	assertNotNull(k.paradigm);
+	assertEquals(1, k.paradigm.size());
+	final Paradigm p = k.paradigm.get(0);
+	assertNotNull(p);
+	assertNotNull(p.formsGroups);
+	assertEquals(2, p.formsGroups.size());
+	for(FormsGroup g: p.formsGroups)
+	{
+	    assertNotNull(g);
+	    assertNotNull(g.forms);
+	    assertEquals(6, g.forms.size());
+	    assertNotNull(g.grm);
+	    assertFalse(g.grm.trim().isEmpty());
+	    for(Form f: g.forms)
+	    {
+		assertNotNull(f);
+		assertNotNull(f.f);
+		assertFalse(f.f.trim().isEmpty());
+		assertNotNull(f.grm);
+		assertFalse(f.grm.trim().isEmpty());
+	    }
 	}
+	assertNotNull(p.pos);
+	assertEquals("СУЩЕСТВИТЕЛЬНОЕ мр", p.pos);
+	assertNotNull(k.wordForm);
+	assertEquals("ТОМСК", k.wordForm);
+    }
 }
