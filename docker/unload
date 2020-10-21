@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+sudo docker container rm -f aot
+sudo docker rmi -f aot
