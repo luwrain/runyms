@@ -1,3 +1,18 @@
+/*
+   Copyright 2020 Michael Pozhidaev <msp@luwrain.org>
+
+   This file is part of LUWRAIN.
+
+   LUWRAIN is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public
+   License as published by the Free Software Foundation; either
+   version 3 of the License, or (at your option) any later version.
+
+   LUWRAIN is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+*/
 
 package org.luwrain.runyms;
 
@@ -15,7 +30,7 @@ public final class RunymsTest extends Assert
 	final String res = r.lemmatize("Томск");
 	assertNotNull(res);
 	assertFalse(res.isEmpty());
-	//		System.out.println("Proba: " + res);
+			System.out.println("Proba: " + res);
     }
 
         @Test public void json() throws Exception
@@ -37,5 +52,27 @@ public final class RunymsTest extends Assert
 	final Paradigm p = k.paradigm.get(0);
 	assertNotNull(p);
 	assertNotNull(p.formsGroups);
+	assertEquals(2, p.formsGroups.size());
+	for(FormsGroup g: p.formsGroups)
+	{
+	    assertNotNull(g);
+	    assertNotNull(g.forms);
+	    assertEquals(6, g.forms.size());
+	    assertNotNull(g.grm);
+	    assertFalse(g.grm.trim().isEmpty());
+	    for(Form f: g.forms)
+	    {
+		assertNotNull(f);
+		assertNotNull(f.f);
+		assertFalse(f.f.trim().isEmpty());
+		assertNotNull(f.grm);
+		assertFalse(f.grm.trim().isEmpty());
+	    }
+
+	}
+	assertNotNull(p.pos);
+	assertEquals("СУЩЕСТВИТЕЛЬНОЕ мр", p.pos);
+	assertNotNull(k.wordForm);
+	assertEquals("ТОМСК", k.wordForm);
 	}
 }
