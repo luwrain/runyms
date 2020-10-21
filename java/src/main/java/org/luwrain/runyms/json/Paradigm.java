@@ -24,7 +24,6 @@ public class Paradigm
     @SerializedName("formsGroups")
     public List<FormsGroup> formsGroups = null;
 
-        @SerializedName("pos")
+    @SerializedName("pos")
     public String pos = null;
-
 }

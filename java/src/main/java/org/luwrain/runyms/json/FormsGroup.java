@@ -26,5 +26,4 @@ public class FormsGroup
 
     @SerializedName("grm")
     public String grm = null;
-    
 }

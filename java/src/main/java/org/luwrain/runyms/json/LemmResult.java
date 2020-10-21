@@ -42,7 +42,6 @@ public class LemmResult
     @SerializedName("wordForm")
     public String wordForm = null;
 
-
     static public LemmResult[] fromJsonAsArray(String str)
     {
 	final List<LemmResult> res = new Gson().fromJson(str, LIST_TYPE);
