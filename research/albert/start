@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+cat /etc/debian_version
+python3 download_glue_data.py
