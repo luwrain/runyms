@@ -1,4 +1,8 @@
 #!/bin/bash -e
 
+rm -rf tmp
+mkdir -p tmp/glue_data
+cp -r glue_data/* tmp/glue_data
 sudo docker rmi -f albert
 sudo docker build -t albert .
+rm -rf tmp

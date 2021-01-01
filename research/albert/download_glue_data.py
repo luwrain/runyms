@@ -23,7 +23,9 @@ import shutil
 import argparse
 import tempfile
 import urllib.request
+import urllib.request as URLLIB
 import zipfile
+import io
 
 TASKS = ["CoLA", "SST", "MRPC", "QQP", "STS", "MNLI", "QNLI", "RTE", "WNLI", "diagnostic"]
 TASK2PATH = {"CoLA":'https://dl.fbaipublicfiles.com/glue/data/CoLA.zip',
