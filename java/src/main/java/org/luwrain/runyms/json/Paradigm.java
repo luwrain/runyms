@@ -26,4 +26,9 @@ public class Paradigm
 
     @SerializedName("pos")
     public String pos = null;
+
+    public String getPosNotNull()
+    {
+	return pos != null?pos.toUpperCase():"";
+    }
 }

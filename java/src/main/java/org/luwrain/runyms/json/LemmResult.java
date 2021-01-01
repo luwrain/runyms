@@ -39,8 +39,21 @@ public class LemmResult
     @SerializedName("paradigm")
     public List<Paradigm> paradigm = null;
 
+    @SerializedName("srcNorm")
+    public String srcNorm = null;
+
     @SerializedName("wordForm")
     public String wordForm = null;
+
+    public String[] getMorphInfoAsArray()
+    {
+	return splitArray(morphInfo);
+    }
+
+    public String[] getCommonGrammemsAsArray()
+    {
+	return splitArray(commonGrammems);
+    }
 
     static public LemmResult[] fromJsonAsArray(String str)
     {
@@ -49,4 +62,18 @@ public class LemmResult
 	    return null;
 	return res.toArray(new LemmResult[res.size()]);
     }
+
+    static public String[] splitArray(String value)
+    {
+	if (value == null)
+	    return new String[0];
+	final List<String> res = new ArrayList();
+	for(String s: value.split(",", -1))
+	{
+	    final String ss = s.trim();
+	    if (!s.isEmpty())
+		res.add(s.toUpperCase());
+	}
+	return res.toArray(new String[res.size()]);
+	 }
 }

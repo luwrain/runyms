@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+sudo docker rmi -f albert
+sudo docker build -t albert .

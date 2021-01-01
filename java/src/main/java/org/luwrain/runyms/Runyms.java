@@ -35,6 +35,12 @@ public class Runyms
 
     public String lemmatize(String word)
     {
+	switch(word.toUpperCase())
+	{
+	case "ЯЭЛЬ":
+	    //	case "РАЗБЛАГОВЕСТИЛА":
+	    return "[]";
+	}
 	try {
 	    return new String (lemmatizeImpl(word.getBytes("UTF-8")), "UTF-8");
 	}
